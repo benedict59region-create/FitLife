@@ -4,7 +4,7 @@ print("Добро пожаловать в фитнес-трекер FitLife!")
 user_name = input("Укажите Ваше имя ")
 user_age = input("Укажите Ваш возраст ")
 user_weight = input("Укажите Ваш вес в килограммах, например, 79.4 ")
-user_height = input("Укажите, Ваш рост в сантиметрах, например, 180 ")
+user_height = input("Укажите, Ваш рост в метрах, например, 1.85 ")
 
 # Информируем пользователя, что успешно записали данные для расчета
 print("Ваши данные приняты - готовим расчет.")
@@ -18,8 +18,8 @@ user_name = user_name.title()
 # Применяем плавающую точку к user_weight
 float_user_weight = float(user_weight)
 
-# Переводим user_height в метры
-float_user_height = float(user_height) / 100
+# Применяем плавающую точку к user_height
+float_user_height = float(user_height)
 
 # Рассчитываем ИМТ
 bmi = float_user_weight / (float_user_height ** 2)
