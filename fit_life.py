@@ -1,31 +1,67 @@
+# Норма воды в милилитрах на один килограмм веса
+WATER_ML_PER_KG = 30
+
+# Объем милилитров в одном литре
+WATER_ML_PER_L = 1000
+
 print("Добро пожаловать в фитнес-трекер FitLife!")
 
 # Запрашиваем данные пользователя
 user_name = input("Укажите Ваше имя ")
-user_age = input("Укажите Ваш возраст ")
-user_weight = input("Укажите Ваш вес в килограммах, например, 79.4 ")
-user_height = input("Укажите, Ваш рост в метрах, например, 1.85 ")
+
+while True:
+    user_age = input("Укажите Ваш возраст ")
+    try:
+        user_age = int(user_age)
+        if 1 <= user_age <= 120:
+            break
+        else:
+            print(
+                 f"Введенное значение вне допустимого диапазона."
+                 f" Введите значение от 1 до 120",
+                 )
+    except ValueError:
+            print("Введите целое число, например, 25")
+
+while True:
+    user_weight = input("Укажите Ваш вес в килограммах, например, 79.4 ")
+    try:
+        user_weight = float(user_weight)
+        if 5.0 <= user_weight <= 250.0:
+            break
+        else:
+            print(
+                 f"Введенное значение вне допустимого диапазона."
+                 f" Введите значение от 5.0 до 250.0",
+                 )
+    except ValueError:
+            print("Введите корректное число, например, 79.4")
+
+while True:
+    user_height = input("Укажите Ваш рост в метрах, например, 1.85 ")
+    try:
+        user_height = float(user_height)
+        if 0.5 <= user_height <= 2.5:
+            break
+        else:
+            print(
+                 f"Введенное значение вне допустимого диапазона."
+                 f" Введите значение от 0.5 до 2.5",
+                 )
+    except ValueError:
+            print("Введите корректное число, например, 1.85")
 
 # Информируем пользователя, что успешно записали данные для расчета
 print("Ваши данные приняты - готовим расчет...")
 
-# Записываем user_age как число. На текущем этапе не требуется
-user_age = int(user_age)
-
 # Делаем user_name с заглавной
 user_name = user_name.title()
 
-# Применяем плавающую точку к user_weight
-float_user_weight = float(user_weight)
-
-# Применяем плавающую точку к user_height
-float_user_height = float(user_height)
-
 # Рассчитываем ИМТ
-bmi = float_user_weight / (float_user_height ** 2)
+bmi = user_weight / (user_height ** 2)
 
 # Рассчитываем норму воды в день и переводим в литры
-water_l = float_user_weight * 30 / 1000
+water_l = user_weight * WATER_ML_PER_KG / WATER_ML_PER_L
 
 # Выводим пользователю результат
 print("_" * 50)
